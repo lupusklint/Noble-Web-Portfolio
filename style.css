@@ -1,0 +1,149 @@
+body, h1, h2, ul, li, a, p {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    color: inherit;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.logo img {
+    height: 30px;
+}
+
+nav ul {
+    display: flex;
+    align-items: space-around;
+}
+
+nav ul li {
+    margin-left: 50px;
+}
+
+nav ul li a {
+    font-size: 16px;
+    color: #333;
+}
+
+.contact-button {
+    background-color: #E4E4E4;
+    border: 1px solid #333;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.hero {
+    height: 600px;
+    background-image: url('images/cover.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-text h1 {
+    font-size: 50px;
+    font-weight: normal;
+    letter-spacing: 5px;
+}
+
+.hero-text p {
+    font-size: 64px;
+    margin: 10px 0;
+    letter-spacing: 2px;
+}
+
+.contact-us-main {
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 10px 25px;
+    margin-top: 350px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 32px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.tagline {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 50px;
+    font-weight: lighter;
+    font-style: italic;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.gallery {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.gallery-item {
+    width: 30%;
+}
+
+.gallery-item img {
+    width: 100%;
+    display: block;
+}
+
+/* Updated CSS for the "About Us" section to create an overlay */
+.about-us {
+    position: relative; /* This is the positioning context for the text */
+    text-align: center; /* Centers the text horizontally inside the absolute container */
+}
+
+.about-image img {
+    width: 100%;
+    display: block; /* Removes any default bottom spacing on the image */
+}
+
+.about-text {
+    position: absolute; /* Lifts the text block to be placed over the image */
+    top: 50%; /* Positions the top of the text block at the vertical midpoint */
+    right: 5%; /* Pushes the text block to the right side of the container */
+    transform: translateY(-50%); /* Shifts the text block up by half its height to be truly centered */
+    max-width: 40%; /* Restricts the width of the text block */
+    color: #333; /* Ensures the text is dark and readable */
+    padding: 20px; /* Provides some spacing around the text */
+    text-align: center; /* Aligns the text inside the block to the left */
+}
+
+.about-text h2 {
+    font-size: 64px;
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.about-text h3 {
+    font-size: 24px;
+    font-weight: lighter;
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    font-weight: lighter;
+    font-size: 24px;
+    line-height: 1.6;
+}
