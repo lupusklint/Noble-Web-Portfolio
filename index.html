@@ -3,9 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noble</title>
+<title>Noblè</title>
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="images/Noblè-Logomark-Black White.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Kapakana:wght@300..400&family=League+Script&family=Parisienne&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -25,7 +37,7 @@
 <main>
     <section class="hero">
         <div class="hero-text">
-            <a href="#" class="contact-us-main">Contact us</a>
+            <a href="#" class="view-gallery">View Gallery</a>
         </div>
     </section>
 
@@ -53,11 +65,264 @@
             <h2>Who are we?</h2>
             <h3>Simple, Powerful Event Photos</h3>
             <p>
-                We are Noble, your professional event photographer. We take beautiful pictures of big events like company parties and conferences. Our goal is to catch all the important moments and details, making your event look great for your website or magazines. We make sure every photo is clear, sharp, and tells a powerful story.
+                We are Noblè, your professional event photographer. We take beautiful pictures of big events like company parties and conferences. Our goal is to catch all the important moments and details, making your event look great for your website or magazines. We make sure every photo is clear, sharp, and tells a powerful story.
             </p>
         </div>
     </section>
     <!-- New section ends here -->
+
+    <!-- =================================================================== -->
+    <!--         NEW & IMPROVED INTERACTIVE FAQ SLIDESHOW (V2)               -->
+    <!-- =================================================================== -->
+    <section class="faq">
+            <div class="faq-interactive-wrapper">
+
+    <!-- This wrapper holds ALL 7 slides and moves left/right -->
+            <div class="slides-wrapper">
+
+                <!-- SLIDE 0: The Intro Screen -->
+                <div class="faq-slide slide-intro">
+                    <div class="faq-text">
+                        <h2>
+                            <span class="faq-highlight"><span class="faq-highlight-asked">Frequently asked</span> questions</span>
+                        </h2>
+                        <p>some of the things you may want to know</p>
+                    </div>
+                </div>
+
+                <!-- SLIDE 1: First Question -->
+                <div class="faq-slide">
+                    <div class="slide-content">
+                        <h3>What is your photography style?</h3>
+                        <p>Our style is spontaneous, natural, and bright. We focus on capturing genuine emotions and candid moments in beautiful, light-filled settings. We aim for timeless images that feel authentic and joyful, rather than overly posed.</p>
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: Second Question -->
+                <div class="faq-slide">
+                    <div class="slide-content">
+                        <h3>Do you deliver every image you shoot?</h3>
+                        <p>We do not. We take many photos during an event to ensure we capture the perfect moment. We then carefully curate the best images, removing duplicates, test shots, and any with unflattering expressions. This ensures you receive a polished gallery filled with high-quality, impactful memories.</p>
+                    </div>
+                </div>
+
+                <!-- SLIDE 3, 4, 5... (Your other questions go here) -->
+                <div class="faq-slide">
+                    <div class="slide-content">
+                        <h3>How long will it take to receive our photos?</h3>
+                        <p>Our standard turnaround time for a full event gallery is between 4 to 6 weeks. We believe in taking the necessary time to carefully edit each photo to our high standards. However, we love sharing sneak peeks, so you can expect a few preview images within a week of your event!</p>
+                    </div>
+                </div>
+                <div class="faq-slide">
+                    <div class="slide-content">
+                        <h3>What happens if it rains on our event day?</h3>
+                        <p>We always come prepared! We can create beautiful, dramatic photos with umbrellas or find a sheltered outdoor location. If the weather is truly impossible, we'll work with you to find the best indoor spots at your venue. Some of the most romantic photos come from embracing the weather!</p>
+                    </div>
+                </div>
+                <div class="faq-slide">
+                    <div class="slide-content">
+                        <h3>Do you offer packages, or can we create a custom one?</h3>
+                        <p>We offer several popular packages designed for different types of events and coverage needs. However, we understand every event is unique. We are more than happy to work with you to create a custom package tailored specifically to your vision, timeline, and budget.</p>
+                    </div>
+                </div>
+
+                <!-- NEW LAST SLIDE -->
+                <div class="faq-slide slide-intro">
+                    <div class="faq-text">
+                        <h2>
+                            <span class="faq-highlight"><span class="faq-highlight-asked">Still have</span> questions</span>
+                        </h2>
+                        <p>email us at thenoblelensman@gmail.com</p>
+                    </div>
+                </div>
+
+            </div> <!-- End of slides-wrapper -->
+
+            <!-- The navigation arrows now control the single wrapper -->
+            <div class="faq-navigation">
+                <button class="faq-arrow-link" id="slide-prev-btn" aria-label="Previous">
+                    <!-- Ultra-thin Left Arrow SVG -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+                <div class="slide-dots">
+                    <button class="dot" data-slide-index="0" aria-label="Go to slide 1"></button>
+                    <button class="dot" data-slide-index="1" aria-label="Go to slide 2"></button>
+                    <button class="dot" data-slide-index="2" aria-label="Go to slide 3"></button>
+                    <button class="dot" data-slide-index="3" aria-label="Go to slide 4"></button>
+                    <button class="dot" data-slide-index="4" aria-label="Go to slide 5"></button>
+                    <button class="dot" data-slide-index="5" aria-label="Go to slide 6"></button>
+                    <button class="dot" data-slide-index="6" aria-label="Go to slide 7"></button>
+                </div>
+
+                <button class="faq-arrow-link" id="slide-next-btn" aria-label="Next">
+                    <!-- Same SVG, will be flipped with CSS -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+
+
+
+
+
+        </div>
+    </section>
+
+
+    <!-- New "Past Stories" section starts here -->
+    <section id="past-stories-section" class="past-stories">
+        <div class="past-stories-text">
+            <h4>A glimpse of our</h4>
+            <h2>
+                PAST<br>STORIES
+            </h2>
+        </div>
+    </section>
+    <!-- New section ends here -->
+     
+
+    <!-- New Photo Collage Gallery Section -->
+    <section class="photo-collage">
+        <!-- Each div is an item in our grid. I've added classes to target them specifically. -->
+        <div class="collage-item item-1"><img src="images/gallery/1.jpg" alt="Woman and a horse"></div>
+        <div class="collage-item item-2"><img src="images/gallery/34.jpg" alt="Wedding rings"></div>
+        <div class="collage-item item-3"><img src="images/gallery/22.jpg" alt="Woman in a flower field"></div>
+        <div class="collage-item item-4"><img src="images/gallery/14.jpg" alt="Woman in pink sweater"></div>
+        <div class="collage-item item-5"><img src="images/gallery/13.jpg" alt="Couple on a motorcycle"></div>
+        <div class="collage-item item-6"><img src="images/gallery/17.jpg" alt="Couple on the beach"></div>
+        <div class="collage-item item-7"><img src="images/gallery/23.jpg" alt="Woman holding a plant"></div>
+        <div class="collage-item item-8"><img src="images/gallery/12.jpg" alt="Couple by a red wall"></div>
+        <div class="collage-item item-9"><img src="images/gallery/2.jpg" alt="Woman on a horse on the beach"></div>
+        <div class="collage-item item-10"><img src="images/gallery/24.jpg" alt="Couple on a bike ride"></div>
+        <div class="collage-item item-11"><img src="images/gallery/29.jpg" alt="Couple walking on the beach"></div>
+        <div class="collage-item item-12"><img src="images/gallery/19.jpg" alt="Woman sitting in a car"></div>
+        <div class="collage-item item-13"><img src="images/gallery/25.jpg" alt="Woman holding flowers"></div>
+        <div class="collage-item item-14"><img src="images/gallery/30.jpg" alt="Couple in a field"></div>
+        <div class="collage-item item-15"><img src="images/gallery/9.jpg" alt="Couple under an arch"></div>
+        <div class="collage-item item-16"><img src="images/gallery/15.jpg" alt="Woman with a coffee mug"></div>
+        <div class="collage-item item-17"><img src="images/gallery/33.jpg" alt="Woman lying in flowers"></div>
+        <div class="collage-item item-18"><img src="images/gallery/35.png" alt="Couple holding hands"></div>
+    </section>
+    <!-- End of Photo Collage Section -->
+
+    <!-- New Footer Section -->
+<footer>
+    <div class="footer-container">
+        
+        <!-- Column 1: Logo and Socials -->
+        <div class="footer-left">
+            <img src="images/Noblè-Horizontal Logo-Black.png" alt="Noble Logo" class="footer-logo">
+            <a href="#" class="social-icon"><img src="images/facebook vector icon.png" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="images/instagram vector icon.png" alt="Instagram"></a>
+        </div>
+        
+        <!-- Column 2: Copyright -->
+        <div class="footer-center">
+            <p>© 2024 NOBLÈ All rights reserved</p>
+        </div>
+        
+        <!-- Column 3: Contact Info -->
+        <div class="footer-right">
+            <h4>CONTACT US</h4>
+            <p>thenoblelensman@gmail.com</p>
+            <p>+63 966-149-7759</p>
+        </div>
+
+    </div>
+</footer>
+<!-- End of Footer -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // --- 1. FAQ SLIDESHOW LOGIC ---
+
+        const slidesWrapper = document.querySelector('.slides-wrapper');
+        const nextBtn = document.getElementById('slide-next-btn');
+        const prevBtn = document.getElementById('slide-prev-btn');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = document.querySelectorAll('.faq-slide').length;
+        let currentSlideIndex = 0;
+
+        // Check if the slider elements actually exist before running the slider code
+        if (slidesWrapper && nextBtn && prevBtn && dots.length > 0) {
+
+            function goToSlide(index) {
+                const offset = -index * (100 / totalSlides);
+                slidesWrapper.style.transform = `translateX(${offset}%)`;
+                currentSlideIndex = index;
+                updateNav();
+                updateDots();
+            }
+
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    if (index === currentSlideIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            function updateNav() {
+                prevBtn.classList.toggle('hidden', currentSlideIndex === 0);
+                nextBtn.classList.toggle('hidden', currentSlideIndex === totalSlides - 1);
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlideIndex < totalSlides - 1) {
+                    goToSlide(currentSlideIndex + 1);
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlideIndex > 0) {
+                    goToSlide(currentSlideIndex - 1);
+                }
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    const slideIndex = parseInt(e.currentTarget.dataset.slideIndex);
+                    goToSlide(slideIndex);
+                });
+            });
+
+            // Initialize the slideshow
+            goToSlide(0);
+        }
+
+
+        // --- 2. HERO SECTION SCROLL LOGIC ---
+
+        const heroSection = document.querySelector('.hero');
+        const pastStoriesSection = document.querySelector('#past-stories-section');
+
+        // Check if both the hero and the target section exist
+        if (heroSection && pastStoriesSection) {
+            heroSection.addEventListener('click', function(event) {
+                // Prevent default link behavior if a user clicks on the "View Gallery" link itself
+                event.preventDefault();
+
+                // Scroll to the target section with a smooth animation
+                pastStoriesSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+    });
+</script>
+
+
+
+
+
+
+
 </main>
 </body>
 </html>
