@@ -1,5 +1,5 @@
-/* --- Base Styles (No changes here) --- */
-body, h1, h2, ul, li, a, p {
+/* --- Base Styles --- */
+body, h1, h2, h3, h4, ul, li, a, p {
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -14,34 +14,81 @@ body {
 
 header {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-between; -- REMOVED so the logo stays on the left */
     align-items: center;
-    padding: 20px 50px;
+    padding: 15px 20px;
     background-color: #ffffff;
     border-bottom: 1px solid #eaeaea;
+    position: relative; /* This is essential for absolute positioning */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    z-index: 10;
 }
 
 .logo img {
-    height: 20px;
+    height: 18px;
+    margin-right: 10px;
 }
 
 .logo .black-logo {
-    height: 18px;
+    height: 16px;
 }
 
-nav ul {
+/* Hamburger Icon Styles */
+.hamburger {
+    display: block;
+    cursor: pointer;
+    z-index: 10;
+
+    /* --- ADD THESE LINES --- */
+    position: absolute; /* Take the icon out of the normal flow */
+    top: 50%; /* Position it halfway from the top */
+    right: 20px; /* Position it from the right, matching header padding */
+    transform: translateY(-50%); /* Perfectly center it vertically */
+}
+
+.hamburger .line {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Navigation Styles */
+.nav-bar {
+    /* The nav element itself is just a container */
+}
+
+.nav-links {
+    display: none; /* Hide nav links by default on mobile */
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0; /* Align to the top of the header */
+    left: 0;
+    width: 100%;
+    padding-top: 60px; /* Space for the header/logo */
+    padding-bottom: 20px;
+    background-color: #ffffff;
+}
+
+/* This class will be toggled by JavaScript */
+.nav-links.active {
     display: flex;
-    align-items: center; /* Corrected from space-around */
 }
 
 nav ul li {
-    margin-left: 50px;
+    margin: 15px 0; /* Vertical margin for mobile */
 }
 
 nav ul li a {
     font-family: 'Poppins', sans-serif;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 18px; /* Slightly larger for better tapping */
     color: #333;
 }
 
@@ -50,8 +97,11 @@ nav ul li a {
     border: 1px solid #000000;
     padding: 8px 15px;
     border-radius: 5px;
+    margin-top: 15px; /* Add margin for mobile view */
 }
 
+
+/* --- Hero Section --- */
 .hero {
     height: 600px;
     background-image: url('images/cover.jpg');
@@ -88,10 +138,9 @@ nav ul li a {
     font-size: 32px;
 }
 
-/* --- 2. The Scalable Tagline --- */
+/* --- The Scalable Tagline --- */
 .tagline {
     text-align: center;
-    /* Use a responsive padding that shrinks with the container */
     padding: 2.5vw;
     font-family: 'Roboto Serif', serif;
     font-style: italic;
@@ -99,11 +148,7 @@ nav ul li a {
 }
 
 .tagline p {
-    /* Creates perfectly fluid text that scales with the viewport */
-    /* clamp(MINIMUM, PREFERRED, MAXIMUM) */
-    font-size: clamp(1rem, 2.5vw, 2.125rem); /* e.g., Scales between 16px and 34px */
-
-    /* This is NON-NEGOTIABLE: It forces the text to stay on a single line */
+    font-size: clamp(1rem, 2.5vw, 2.125rem);
     white-space: nowrap;
     font-weight: 100;
 }
@@ -112,25 +157,24 @@ nav ul li a {
 .gallery {
     display: flex;
     justify-content: center;
-    align-items: center; /* Good practice to vertically align items */
+    align-items: center;
 }
 
 .gallery-item {
-    width: 300px; /* Or any specific width you want */
-    margin: 0 10px; /* Adds space between the images */
+    width: 300px;
+    margin: 0 10px;
 }
 
 .gallery-item img {
-    width: 100%; /* Image will fill the 300px container */
-    height: auto; /* Maintains the aspect ratio */
+    width: 100%;
+    height: auto;
     display: block;
     object-fit: cover;
 }
 
-/* --- 1. The Container Setup --- */
+/* --- About Us Section --- */
 .about-us {
     position: relative;
-    /* This defines the component as a container its children can query */
     container-type: inline-size;
     container-name: about-section;
 }
@@ -141,7 +185,6 @@ nav ul li a {
     display: block;
 }
 
-/* --- 2. Style the Text Container for Desktop --- */
 .about-text {
     position: absolute;
     top: 50%;
@@ -150,13 +193,12 @@ nav ul li a {
     width: 50%;
     max-width: 600px;
     color: #333;
-    padding: 2cqw; /* Padding scales with the container's width */
+    padding: 2cqw;
     text-align: center;
     box-sizing: border-box;
     background-color: transparent;
 }
 
-/* --- 3. Style the Headings and Paragraph --- */
 .about-text h2 {
     font-size: clamp(1.2rem, 5cqw, 2.5rem);
     font-style: italic;
@@ -171,42 +213,26 @@ nav ul li a {
     margin: 0 0 1.5cqw 0;
 }
 
-/*
- * This is the key part for the paragraph.
- * The font size scales with the container's width (cqw),
- * but it's allowed to wrap naturally.
-*/
 .about-text p {
     font-family: 'Poppins', sans-serif;
     font-weight: lighter;
-    /* Adjust clamp values to be slightly smaller to help with visibility */
     font-size: clamp(8px, 2vw, 20px);
     line-height: 1.6;
-    /* Ensure default wrapping behavior */
     white-space: normal;
 }
 
-/* --- 4. Adjust Layout for Smaller Containers to Guarantee Visibility --- */
-/* This is crucial for making sure the text has room to wrap */
 @container about-section (max-width: 800px) {
     .about-text {
-        /*
-         * On smaller containers, we move the text block to give it more
-         * horizontal space, which is essential for the paragraph to wrap and fit.
-        */
         left: 50%;
         right: 2%;
-        width: auto; /* Width is now determined by the left/right properties */
-
-        /* Adjust vertical position if needed to avoid overlap */
+        width: auto;
         top: 50%;
         transform: translateY(-50%);
-
-        /* Use a slightly larger, fixed padding on small screens */
         padding: 15px;
     }
 }
 
+/* --- Past Stories --- */
 .past-stories {
     background-image: url('images/past-stories-img.jpg');
     background-size: cover;
@@ -244,6 +270,7 @@ nav ul li a {
     margin: 0;
 }
 
+/* --- Photo Collage --- */
 .photo-collage {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -283,29 +310,39 @@ nav ul li a {
 .item-17 { grid-column: 4 / 5; grid-row: 13 / 15; }
 .item-18 { grid-column: 2 / 4; grid-row: 14 / 15; }
 
+/* --- Footer --- */
 footer {
     background-color: #E4E4E4;
-    padding: 30px 50px;
+    padding: 40px 20px; /* More vertical and less horizontal padding for mobile */
     color: #333;
     font-size: 14px;
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-between;
+    /* Stack the columns vertically on mobile */
+    flex-direction: column;
+    /* Center the stacked items */
     align-items: center;
+    /* Add space between the stacked items */
+    gap: 30px;
     max-width: 1400px;
     margin: 0 auto;
+    text-align: center; /* Center all text within the footer on mobile */
 }
 
 .footer-left {
     display: flex;
     align-items: center;
+    /* Allow social icons to wrap if needed on very small screens */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .footer-logo {
     height: 35px;
     margin-right: 15px;
+    margin-bottom: 10px; /* Add space below logo when icons wrap */
 }
 
 .social-icon img {
@@ -316,12 +353,12 @@ footer {
 
 .footer-center {
     font-family: 'Courier New', Courier, monospace;
-    text-align: center;
+    /* text-align is inherited from .footer-container */
 }
 
 .footer-right {
     font-family: 'Courier New', Courier, monospace;
-    text-align: right;
+    /* text-align is inherited from .footer-container */
 }
 
 .footer-right h4 {
@@ -335,6 +372,35 @@ footer {
     margin: 5px 0;
 }
 
+/* These styles apply only when the screen is 768px or wider */
+@media (min-width: 768px) {
+    footer {
+        padding: 30px 50px; /* Restore original padding */
+    }
+
+    .footer-container {
+        /* Go back to a horizontal layout */
+        flex-direction: row;
+        /* Spread the items out across the screen */
+        justify-content: space-between;
+        gap: 20px; /* Gap will now apply horizontally */
+    }
+
+    .footer-left {
+       justify-content: flex-start; /* Align left items to the start */
+    }
+
+    /* Reset text alignment for center and right columns */
+    .footer-center {
+        text-align: center;
+    }
+
+    .footer-right {
+        text-align: right;
+    }
+}
+
+/* --- FAQ Section --- */
 .faq {
     text-align: center;
     background-color: #FAFAFA;
@@ -354,15 +420,25 @@ footer {
     height: 100%;
     width: 700%;
     transition: transform 0.6s ease-in-out;
+        /* Prevents the user from selecting text while dragging */
+    user-select: none;
+    -webkit-user-select: none; /* For Safari */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For Internet Explorer/Edge */
 }
 
 .faq-slide {
+    cursor: grab;
     justify-content: center;
     width: calc(100% / 7);
     box-sizing: border-box;
     display: flex;
     align-items: center;
     gap: 50px;
+}
+
+.faq-slide:active {
+    cursor: grabbing;
 }
 
 .slide-intro {
@@ -446,4 +522,48 @@ footer {
 
 #slide-next-btn svg {
     transform: scaleX(-1);
+}
+
+/* --- Media Queries --- */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    /* Header styles for larger screens */
+    header {
+        justify-content: space-around;
+        padding: 20px 50px;
+    }
+
+    .logo img {
+        height: 20px;
+    }
+
+    .logo .black-logo {
+        height: 18px;
+    }
+
+    .hamburger {
+        display: none; /* Hide hamburger on larger screens */
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        position: static; /* Reset positioning */
+        background-color: transparent;
+        width: auto;
+        padding-top: 0; /* Reset padding */
+    }
+
+    nav ul li {
+        margin-left: 50px; /* Horizontal margin */
+        margin-top: 0;
+    }
+
+    .contact-button {
+        margin-top: 0;
+    }
+
+    /* Add other tablet/desktop adjustments for other sections if needed */
+
 }
