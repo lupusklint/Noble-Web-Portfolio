@@ -1,4 +1,4 @@
-
+/* --- Base Styles (No changes here) --- */
 body, h1, h2, ul, li, a, p {
     margin: 0;
     padding: 0;
@@ -22,7 +22,11 @@ header {
 }
 
 .logo img {
-    height: 30px;
+    height: 20px;
+}
+
+.logo .black-logo {
+    height: 18px;
 }
 
 nav ul {
@@ -36,6 +40,7 @@ nav ul li {
 
 nav ul li a {
     font-family: 'Poppins', sans-serif;
+    font-weight: 100;
     font-size: 16px;
     color: #333;
 }
@@ -83,73 +88,123 @@ nav ul li a {
     font-size: 32px;
 }
 
+/* --- 2. The Scalable Tagline --- */
 .tagline {
     text-align: center;
-    padding: 60px 20px;
-    font-size: 32px;
-    font-weight: lighter;
+    /* Use a responsive padding that shrinks with the container */
+    padding: 2.5vw;
+    font-family: 'Roboto Serif', serif;
     font-style: italic;
     color: #333;
-    background-color: #f9f9f9;
 }
+
+.tagline p {
+    /* Creates perfectly fluid text that scales with the viewport */
+    /* clamp(MINIMUM, PREFERRED, MAXIMUM) */
+    font-size: clamp(1rem, 2.5vw, 2.125rem); /* e.g., Scales between 16px and 34px */
+
+    /* This is NON-NEGOTIABLE: It forces the text to stay on a single line */
+    white-space: nowrap;
+    font-weight: 100;
+}
+
 
 .gallery {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
+    align-items: center; /* Good practice to vertically align items */
 }
 
 .gallery-item {
-    width: 30%;
+    width: 300px; /* Or any specific width you want */
+    margin: 0 10px; /* Adds space between the images */
 }
 
 .gallery-item img {
-    width: 100%;
+    width: 100%; /* Image will fill the 300px container */
+    height: auto; /* Maintains the aspect ratio */
     display: block;
+    object-fit: cover;
 }
 
+/* --- 1. The Container Setup --- */
 .about-us {
     position: relative;
-    text-align: center;
+    /* This defines the component as a container its children can query */
+    container-type: inline-size;
+    container-name: about-section;
 }
 
 .about-image img {
     width: 100%;
+    height: auto;
     display: block;
 }
 
+/* --- 2. Style the Text Container for Desktop --- */
 .about-text {
     position: absolute;
     top: 50%;
     right: 5%;
     transform: translateY(-50%);
-    max-width: 40%;
+    width: 50%;
+    max-width: 600px;
     color: #333;
-    padding: 20px;
+    padding: 2cqw; /* Padding scales with the container's width */
     text-align: center;
+    box-sizing: border-box;
+    background-color: transparent;
 }
 
+/* --- 3. Style the Headings and Paragraph --- */
 .about-text h2 {
-    font-size: 32px;
+    font-size: clamp(1.2rem, 5cqw, 2.5rem);
     font-style: italic;
     font-weight: normal;
-    margin-bottom: 20px;
+    margin: 0 0 1.5cqw 0;
 }
 
 .about-text h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 18px;
+    font-size: clamp(0.8rem, 2.8cqw, 1.5rem);
     font-weight: lighter;
-    margin-bottom: 20px;
+    margin: 0 0 1.5cqw 0;
 }
 
+/*
+ * This is the key part for the paragraph.
+ * The font size scales with the container's width (cqw),
+ * but it's allowed to wrap naturally.
+*/
 .about-text p {
     font-family: 'Poppins', sans-serif;
     font-weight: lighter;
-    font-size: 18px;
+    /* Adjust clamp values to be slightly smaller to help with visibility */
+    font-size: clamp(8px, 2vw, 20px);
     line-height: 1.6;
+    /* Ensure default wrapping behavior */
+    white-space: normal;
+}
+
+/* --- 4. Adjust Layout for Smaller Containers to Guarantee Visibility --- */
+/* This is crucial for making sure the text has room to wrap */
+@container about-section (max-width: 800px) {
+    .about-text {
+        /*
+         * On smaller containers, we move the text block to give it more
+         * horizontal space, which is essential for the paragraph to wrap and fit.
+        */
+        left: 50%;
+        right: 2%;
+        width: auto; /* Width is now determined by the left/right properties */
+
+        /* Adjust vertical position if needed to avoid overlap */
+        top: 50%;
+        transform: translateY(-50%);
+
+        /* Use a slightly larger, fixed padding on small screens */
+        padding: 15px;
+    }
 }
 
 .past-stories {
@@ -159,87 +214,55 @@ nav ul li a {
     background-position: center;
     height: 100vh;
     background-color: #f9f9f9;
-
-    /* --- KEY CHANGES FOR POSITIONING --- */
-
-    /* 1. Turn this section into a flex container */
     display: flex;
-
-    /* 2. Center the text block horizontally */
     justify-content: center;
-
-    /* 3. Align the text block to the bottom of the section */
     align-items: flex-end;
-
-    /* 4. (Optional but Recommended) Add some padding so the text isn't stuck to the very bottom edge */
-    padding-bottom: 50px; 
-    box-sizing: border-box; /* Ensures padding is included within the 100vh height */
+    padding-bottom: 50px;
+    box-sizing: border-box;
 }
 
 .past-stories-text {
     padding-bottom: 100px;
     text-align: center;
     color: #ffffff;
-    /* You can remove any positioning-related properties from here if you had them */
 }
 
-/* Styling for "A glimpse of" */
 .past-stories-text h4 {
     font-family: sans-serif;
-    font-weight: 100; /* Use the 'Light' weight we imported */
+    font-weight: 100;
     font-size: 32px;
     margin-bottom: 20px;
     letter-spacing: 1px;
 }
 
-/* Styling for "PAST STORIES" */
 .past-stories-text h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     font-size: 110px;
     letter-spacing: 8px;
-    
-    /* --- CHANGE THIS VALUE --- */
-    line-height: 0.8; /* A value of 1 makes the line height equal to the font size. */
-    
+    line-height: 0.8;
     margin: 0;
 }
 
-/* --- CSS for the Photo Collage Gallery --- */
-
 .photo-collage {
-    /* Step 1: Define the container as a grid */
     display: grid;
-    
-    /* Step 2: Create a 4-column layout and define the even white space between items */
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
-
-    /* Step 3: Add some padding around the entire gallery */
     padding: 12px;
-    background-color: #ffffff; /* Sets the background color of the page behind the gaps */
+    background-color: #ffffff;
 }
 
-/* This styles the container for each image */
 .collage-item {
     border-radius: 10px;
-    /* As requested, a border to visualize the layout. You can remove this later. */
-    overflow: hidden; /* Hides any part of the image that might overflow its container */
+    overflow: hidden;
 }
 
-/* This styles the actual image tag */
 .collage-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This is crucial: it makes the image fill the box without stretching */
-    display: block; /* Removes any default bottom spacing on images */
+    object-fit: cover;
+    display: block;
 }
-
-/* 
-  Step 4: Manually place each item on the grid to match the layout.
-  grid-column: start-line / end-line;
-  grid-row: start-line / end-line;
-*/
 
 .item-1 { grid-column: 1 / 3; grid-row: 1 / 4; }
 .item-2 { grid-column: 3 / 4; grid-row: 1 / 2; }
@@ -260,191 +283,167 @@ nav ul li a {
 .item-17 { grid-column: 4 / 5; grid-row: 13 / 15; }
 .item-18 { grid-column: 2 / 4; grid-row: 14 / 15; }
 
-
-/* --- Footer Styling --- */
-
 footer {
-    background-color: #E4E4E4; /* The light grey background from the image */
-    padding: 30px 50px;       /* Vertical and horizontal padding */
+    background-color: #E4E4E4;
+    padding: 30px 50px;
     color: #333;
     font-size: 14px;
 }
 
 .footer-container {
-    display: flex;                /* Use Flexbox for the layout */
-    justify-content: space-between; /* Pushes the columns to the left, center, and right */
-    align-items: center;          /* Vertically aligns all content to the middle */
-    max-width: 1400px;            /* Optional: keeps the footer from getting too wide on huge screens */
-    margin: 0 auto;               /* Centers the container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-/* Column 1: Logo and Socials */
 .footer-left {
     display: flex;
     align-items: center;
 }
 
 .footer-logo {
-    height: 35px; /* Adjust the logo size as needed */
+    height: 35px;
     margin-right: 15px;
 }
 
 .social-icon img {
-    height: 24px; /* Adjust icon size as needed */
+    height: 24px;
     width: 24px;
     margin-left: 10px;
 }
 
-/* Column 2: Copyright */
 .footer-center {
-    font-family: 'Courier New', Courier, monospace; /* Monospaced font like the image */
+    font-family: 'Courier New', Courier, monospace;
     text-align: center;
 }
 
-/* Column 3: Contact Info */
 .footer-right {
-    font-family: 'Courier New', Courier, monospace; /* Monospaced font */
+    font-family: 'Courier New', Courier, monospace;
     text-align: right;
 }
 
 .footer-right h4 {
-    text-transform: uppercase; /* Makes "CONTACT US" all caps */
+    text-transform: uppercase;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .footer-right p {
-    margin: 5px 0; /* Adds a little space between the email and phone number */
+    margin: 5px 0;
 }
-/* --- UPDATED INTERACTIVE FAQ SLIDESHOW CSS --- */
+
 .faq {
-text-align: center;
-background-color: #FAFAFA;
-padding: 80px 0; /* Vertical padding only */
+    text-align: center;
+    background-color: #FAFAFA;
+    padding: 80px 0;
 }
 
 .faq-interactive-wrapper {
-max-width: 1400px;
-margin: 0 auto;
-position: relative;
-height: 500px;
-overflow: hidden; /* This hides the other slides */
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    height: 500px;
+    overflow: hidden;
 }
 
-/* This is the strip of all 7 slides */
 .slides-wrapper {
-display: flex;
-height: 100%;
-width: 700%; /* 100% for each of the 7 slides */
-transition: transform 0.6s ease-in-out;
+    display: flex;
+    height: 100%;
+    width: 700%;
+    transition: transform 0.6s ease-in-out;
 }
 
-/* Base style for ALL slides */
 .faq-slide {
-justify-content: center;
-width: calc(100% / 7); /* Each slide takes up one-seventh of the wrapper */
-box-sizing: border-box;
-display: flex;
-align-items: center;
-gap: 50px;
+    justify-content: center;
+    width: calc(100% / 7);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 50px;
 }
 
-/* Specific styling for the Intro Slide */
 .slide-intro {
-justify-content: center;
+    justify-content: center;
 }
+
 .slide-intro .faq-text h2 { display: flex; flex-direction: column; align-items: flex-start; gap: 0px; font-family: 'Poppins', sans-serif; font-size: 58px; font-weight: 600; color: #222; margin: 0; }
 .slide-intro .faq-highlight { color: #000000; font-weight: 100; font-size: 38px; font-family: 'Parisienne', cursive; align-self: center; }
 .slide-intro .faq-highlight-asked {font-weight: 100; font-size: 24px; color: #222; align-self: center; font-family: 'Poppins', sans-serif;}
 .slide-intro .faq-text p { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 300; color: #888888; margin-top: 15px; }
 
-/* Styling for the Q&A slides */
 .slide-content { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .slide-number { font-family: 'Poppins', sans-serif; font-size: 80px; font-weight: 600; color: #E0E0E0; }
 .slide-content h3 { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 500; margin: 0 0 15px 0; color: #333; }
 .slide-content p { font-family: 'Poppins', sans-serif; font-size: 18px; line-height: 1.6; color: #666; max-width: 800px; font-weight: 100; }
 
-/* --- Navigation Arrows --- */
-
 .faq-navigation {
-position: absolute;
-bottom: 30px;
-left: 50%;
-transform: translateX(-50%);
-
-
-/* This creates the horizontal layout: < [dots] > */
-display: flex;
-flex-direction: row; /* Horizontal layout */
-align-items: center; /* Vertically align the arrows and dots */
-gap: 30px; /* Space between arrows and the dots container */
-
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
 }
 
-/* --- Small, Unobtrusive Dots --- /
 .slide-dots {
-display: flex;
-justify-content: center;
-gap: 10px; / Space between individual dots */
-
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 
 .dot {
-width: 7px;  /* Making dots much smaller */
-height: 7px;
-border-radius: 50%;
-background-color: #d1d1d1;
-border: none;
-padding: 0;
-cursor: pointer;
-transition: all 0.3s ease;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: #d1d1d1;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .dot:hover {
-background-color: #a8a8a8;
+    background-color: #a8a8a8;
 }
 
 .dot.active {
-background-color: #333;
-transform: scale(1.1);
+    background-color: #333;
+    transform: scale(1.1);
 }
 
 .faq-arrow-link {
-/* Remove text-styling properties */
-font-size: inherit;
-font-weight: inherit;
-line-height: inherit;
-
-/* Base styles for the button container */
-border: none;
-background: transparent;
-width: 50px; /* A consistent clickable area */
-height: 50px;
-display: flex; 
-justify-content: center; 
-align-items: center;
-cursor: pointer;
-transition: all 0.3s ease;
-pointer-events: auto;
-color: #555; /* The SVG's 'currentColor' will use this */
-
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    border: none;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+    color: #555;
 }
 
 .faq-arrow-link:hover {
-color: #000;
-transform: scale(1.1);
+    color: #000;
+    transform: scale(1.1);
 }
 
 .faq-arrow-link.hidden {
-opacity: 0;
-pointer-events: none;
-transform: scale(0.8);
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.8);
 }
 
-/* ADD THIS RULE BACK: It's needed to flip the "next" button's SVG icon */
 #slide-next-btn svg {
-transform: scaleX(-1);
+    transform: scaleX(-1);
 }
-
-
-
